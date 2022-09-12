@@ -9,6 +9,7 @@ button.addEventListener("click", function () {
   inputs = text.split("\n");
 
   for (const word of inputs) {
-    console.log(word.replace("\n", " ").replace("_", ""));
+    let words = word.toLowerCase();
+    console.log(words.replace("\n", " ").replace("_", ""));
   }
 });
