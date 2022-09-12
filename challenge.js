@@ -6,9 +6,9 @@ let inputs = [];
 
 button.addEventListener("click", function () {
   text = document.querySelector(".textarea").value;
-  inputs = text.split(" ");
+  inputs = text.split("\n");
 
-  for (const x of inputs) {
-    console.log(x.replace("_", "").trim());
+  for (const word of inputs) {
+    console.log(word.replace("\n", " ").replace("_", ""));
   }
 });
