@@ -24,42 +24,18 @@ const flights =
 
 const flightsSep = flights.split("+");
 
-console.log(flightsSep);
-
 for (const word of flightsSep) {
   const [action, from, to, time] = word.trim().split(";");
 
-  const output = `${
-    action.includes("Delayed")
-      ? action.padStart(1, "🔴").replaceAll("_", " ")
-      : action.padStart(20, ".........").replaceAll("_", "")
-  }  ${from
-    .replace("fao93766109", "from FAO")
-    .replace("hel7439299980", "from HEL")
-    .replace("bru0943384722", "from BRU")} ${to
-    .replaceAll("txl2133758440", " to TXL")
-    .replace("fao93766109", "to FAO")
-    .replace("lis2323639855", "to LIS")} (${time.replace(":", "h")}) `;
+  const output = `${action.includes("_Delayed") ? "🔴" : " "}${action.replace(
+    "_",
+    ""
+  )} from ${from.slice(0, 3).toUpperCase()} to ${to
+    .slice(0, 3)
+    .toUpperCase()} (${time.replace(":", "h")}) `.padStart(50);
 
   console.log(output);
 
-  const from1 = from
-    .replace("fao93766109", "from FAO")
-    .replace("hel7439299980", "from HEL")
-    .replace("bru0943384722", "from BRU");
-
-  const to1 = to
-    .replaceAll("txl2133758440", " to TXL")
-    .replace("fao93766109", "to FAO")
-    .replace("lis2323639855", "to LIS");
-
-  const newTime = time
-    .replace("11:25", "11h25")
-    .replace("11:45", "11h45")
-    .replace("12:05", "12h05")
-    .replace("12:30", "12h30");
-
-  const newAction = action.replace("_", ".....");
   //console.log(newAction, from1, to1, newTime);
 }
 
