@@ -29,7 +29,11 @@ console.log(flightsSep);
 for (const word of flightsSep) {
   const [action, from, to, time] = word.trim().split(";");
 
-  const output = `${action.replace("_", "")} ${from
+  const output = `${
+    action.includes("Delayed")
+      ? action.padStart(1, "🔴").replaceAll("_", " ")
+      : action.padStart(20, ".........").replaceAll("_", "")
+  }  ${from
     .replace("fao93766109", "from FAO")
     .replace("hel7439299980", "from HEL")
     .replace("bru0943384722", "from BRU")} ${to
